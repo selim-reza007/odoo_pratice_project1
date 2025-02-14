@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+
+<odoo>
+
+    <record id="view_school_teacher_search" model="ir.ui.view">
+        <field name="name">school.teacher.search</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+
+            </search>
+        </field>
+    </record>
+
+    <record id="view_school_teacher_tree" model="ir.ui.view">
+        <field name="name">school.teacher.tree</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state == 'open'" decoration-success="state == 'done'" decoration-danger="state == 'cancelled'">
+                <field name="name"/>
+                <field name="department"/>
+                <field name="dob" optional="show"/>
+                <field name="joinDate" optional="hide"/>
+                <field name="student_id" optional="hide"/>
+                <field name="studentClass"/>
+                <field name="age"/>
+                <field name="state" widget="badge" decoration-info="state == 'open'" decoration-success="state == 'done'" decoration-danger="state == 'cancelled'"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_school_teacher_form" model="ir.ui.view">
+        <field name="name">school.teacher.form</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <form string="Module Category">
+                <header>
+                    <button type="object" name="action_todo" data-hotkey="o" string="todo" states="done,cancelled"/>
+                    <button type="object" name="action_done" data-hotkey="p" string="Done" states="to do"/>
+                    <button type="object" name="action_cancelled" data-hotkey="q" string="Cancel" states="to do"/>
+                    <field name="state" widget="statusbar" nolabel="1"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="department"/>
+                        <field name="student_id"/>
+                        <field name="studentClass" readonly="1"/>
+                        <field name="studentDob"/>
+                        <field name="dob"/>
+                        <field name="age" readonly="0"/>
+                        <field name="joinDate"/>
+                        <h1>
+                            <field name="priority" widget="priority"/>
+                        </h1>
+                    </group>
+                    <notebook>
+                        <page name="security" string="Security">
+                            <field name="profile" placeholder="Select pdf file"/>
+                            <button string="Click Me" class="oe_highlight" type="object" name="donesuccess" data-hotkey="q"/>
+                        </page>
+                        <page name='advanced' string="Advanced Properties">
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_school_teacher" model="ir.actions.act_window">
+        <field name="name">School Teacher</field>
+        <field name="res_model">school.teacher</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">{}</field>
+        <field name="context">{'default_department':'GED'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add new teacher
+            </p><p>
+            Let's create a teacher.
+        </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="school_teacher_menu"
+            name="Teacher"
+            action="action_school_teacher"
+            parent="school_menu_teacher_root"/>
+
+</odoo>

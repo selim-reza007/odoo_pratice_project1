@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+
+<odoo>
+
+    <record id="view_crm_meeting_search" model="ir.ui.view">
+        <field name="name">school.student.search</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="studentName" filter_domain="['|',('studentClass','ilike', self), ('studentDob', 'ilike', self)]"/>
+                <filter string="class ten" name="classten" domain="[('studentClass', '=', 'ten')]"/>
+                <!--                <separator/>-->
+                <filter string="class eight" name="classeight" domain="[('studentClass', '=', 'eight')]"/>
+                <filter string="Archived" name="active" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="group_by_class" name="studentClass" domain="[]" context="{'group_by': 'studentClass'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_school_student_tree" model="ir.ui.view">
+        <field name="name">school.student.tree</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <tree string="Companies" sample="1" multi_edit="1">
+                <field name="studentName"/>
+                <field name="studentClass"/>
+                <field name="studentDob"/>
+                <field name="teacher_id" widget="many2one_avatar_user"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_school_student_form" model="ir.ui.view">
+        <field name="name">school.student.form</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <form string="Module Category">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="studentName" default_focus="1"/>
+                            <field name="studentClass"/>
+                        </group>
+                        <group>
+                            <field name="studentDob"/>
+                            <field name="active" invisible="1"/>
+                            <field name="teacher_id"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page name="AddressInfo" string="Address">
+                            <group>
+                                <field name="address" placeholder="Enter Address" options="{'collaborative': true, 'resizable': true}"/>
+                            </group>
+                        </page>
+                        <page name="bank_account" string="Journal Entries">
+
+                        </page>
+                    </notebook>
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_school_student" model="ir.actions.act_window">
+        <field name="name">Student</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_studentClass':'eight'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add new student
+            </p><p>
+            Let's create a student.
+        </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="school_student_menu"
+            name="Student details"
+            action="action_school_student"
+            parent="school_menu_student_master"
+            sequence="0"/>
+
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <menuitem
+        id="hospital_menu_root"
+        name="Hospital"
+        sequence="1"/>
+
+    <menuitem
+        id="hospital_doctor_master"
+        name="Doctors"
+        parent="hospital_menu_root"
+        sequence="1"/>
+
+    <menuitem
+        id="hospital_patient_master"
+        name="Patients"
+        parent="hospital_menu_root"
+        sequence="2"/>
+
+</odoo>

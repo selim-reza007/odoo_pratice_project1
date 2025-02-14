@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="view_hospital_doctor_form" model="ir.ui.view">
+        <field name="name">hospital.doctor.form</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <form string="Doctor form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="contact"/>
+                        <field name="available_days"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hospital_doctor_tree" model="ir.ui.view">
+        <field name="name">hospital.doctor.tree</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <tree string="Doctor tree" sample="1">
+                <field name="name"/>
+                <field name="contact"/>
+                <field name="available_days"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_hospital_doctor_view" model="ir.actions.act_window">
+        <field name="name">Doctor's info</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.doctor</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No data yet!
+            </p><p>
+            let's create a new doctor record now!
+        </p>
+        </field>
+    </record>
+
+
+    <menuitem
+            id="hospital_doctor_menu"
+            name="Doctors"
+            action="action_hospital_doctor_view"
+            parent="hospital_doctor_master"
+            sequence="1"/>
+
+</odoo>
