@@ -1,1 +1,1 @@
-from . import doctor, paitent, medicine
+from . import doctor, paitent, medicine, appointments

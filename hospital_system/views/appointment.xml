@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="action_hospital_appointment_view" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="type">ir.actions.act_window</field>
+    </record>
+
+    <menuitem
+            id="hospital_medicine_menu"
+            action="action_hospital_appointment_view"
+            name="Appointment"
+            parent="hospital_appointment_master"
+            sequence="0"/>
+
+</odoo>

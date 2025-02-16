@@ -11,5 +11,6 @@
         'views/doctor.xml',
         'views/patient.xml',
         'views/medicine.xml',
+        'views/appointment.xml',
     ],
 }
