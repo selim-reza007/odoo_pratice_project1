@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="action_hospital_medicine_view" model="ir.actions.act_window">
+        <field name="name">Medicines</field>
+        <field name="res_model">hospital.medicine</field>
+        <field name="type">ir.actions.act_window</field>
+    </record>
+
+    <menuitem
+            id="hospital_medicine_menu"
+            action="action_hospital_medicine_view"
+            name="Medicine"
+            parent="hospital_menu_root"
+            sequence="3"/>
+
+</odoo>

@@ -1,1 +1,1 @@
-from . import doctor, paitent
+from . import doctor, paitent, medicine

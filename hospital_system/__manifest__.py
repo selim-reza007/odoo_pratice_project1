@@ -6,9 +6,10 @@
     'application': True,
     'license': 'LGPL-3',
     'data': [
+        'security/ir.model.access.csv',
         'views/menu.xml',
         'views/doctor.xml',
         'views/patient.xml',
-        'security/ir.model.access.csv',
+        'views/medicine.xml',
     ],
 }
